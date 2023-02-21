@@ -46,14 +46,14 @@ public void setFirst(Boolean firstTime){
     this.firstTime = firstTime;
 }
 
-public void setFabrica(int i){
-    fabrica = i;
-}
-
 public int getFabrica(){
      return fabrica;
 }
 
+public void setFabrica(int i){
+    fabrica = i;
+}
 
 }
+
 

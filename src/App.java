@@ -1,22 +1,17 @@
 import java.util.Scanner;
 
 public class App {
-    public String limitaString(String texto, int maximo){
-        return texto.length() <= maximo ? texto : texto.substring(0, maximo);
-     }
-
+    
     public static void main(String[] args){
         try (Scanner scanf = new Scanner(System.in)) {
             tvSmart quarTv = new tvSmart();
             tvSmart salaTv = new tvSmart();
-            Tv varTv = new Tv();
-            var o = 0;
+            Tv varTv = new Tv();  
             int opc;
             int opcao;
             int option=0;
             int channel;
             int op;
-            int verify;
             String senha;
             String login;
 
@@ -83,6 +78,7 @@ public class App {
                             login = scanf.next();
                             System.out.println("|Digite sua senha|");
                             senha = scanf.next(); 
+                            
     if(login.equals(quarTv.getLogin()) && senha.equals(quarTv.getSenha())){
         System.out.println("Logando");
         op=-1;
