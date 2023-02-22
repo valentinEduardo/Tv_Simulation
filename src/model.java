@@ -69,7 +69,7 @@ return canalAtual;
 
    public boolean verifCanais(int canal){
     int i = 0;
-    while(canal!=canais[i] && i<canais.length){
+    while( i<canais.length && canal!=canais[i] ){
      i++;
     }
     if (i>=5){
