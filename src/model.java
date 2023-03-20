@@ -5,7 +5,7 @@ private int indice;
     private Boolean ligado;
     private int volume;
     private int canalAtual; 
-    private int tamanho = 0;
+    private int tamanho = 5;
     private static int[] canais = new int[5];{
     canais[0] = 1;
     canais[1] = 3;
@@ -25,6 +25,8 @@ private int indice;
              canais[tamanho++] = i;
         }else if(verifCanais(-1)){
             canais[indice] = i;
+        }else{
+            
         }
         
     }

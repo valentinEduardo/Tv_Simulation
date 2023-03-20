@@ -6,6 +6,8 @@ public class App {
    int contador = 0;
      Tv[] tvs = new Tv[3];
      tvSmart[] smarts = new tvSmart[3];
+     control[] controles = new control[3];
+     controleSmart[] controlesSmart = new  controleSmart[3];
       int[] quantidade = new int[3];
 
     
@@ -14,16 +16,13 @@ public class App {
      for (Tv s : tvs) {
                  System.out.println(s);
      }
-        try (Scanner scanf = new Scanner(System.in)) {
-            tvSmart quarTv = new tvSmart();
-            tvSmart salaTv = new tvSmart();
-            Tv varTv = new Tv();  
+        try (Scanner scanf = new Scanner(System.in)) {  
             int opc;
             int opcao;
-            int option=0;
-            int channel;
-            int op;
-            
+            int opcao2;
+            int opcao3;
+            int opcao4;
+            int op=0;
             String senha;
             String login;
 do{
@@ -37,29 +36,35 @@ do{
         System.out.println("\n-Escolha qual comprar-");
         System.out.println("             |1- Tv | ");
         System.out.println("             |2-  Smart Tv  |");
+        System.out.println("             |3-  Sair  |");
         opc = scanf.nextInt();
 
 
          if ( opc== 1 && contador< 3 ) {
          
            tvs[contador] = new Tv();
+           quantidade[contador]=1;
+           controles[contador] = new control();
            contador++;
-        }else{
+           
+        }else if(opc==1 && contador==3){
             System.out.println("Vc atingiu o número máximo de tvs");
         }
 
         if (opc == 2 && contador< 3 ) {
         
            smarts[contador] = new tvSmart();
+           quantidade[contador]=2;
+           controlesSmart[contador] = new controleSmart();
            contador++;
-        }else{
+        }else if(opc==2 && contador==3){
             System.out.println("Vc atingiu o número máximo de tvs ou digitou errado");
         }
 
-     }while();
+     }while(opc!=3);
     }else if(opc==2 && contador>0){
 
-    }else if(opc==2 && conttador==0){
+    }else if(opc==2 && contador==0){
         System.out.println("Compre uma Tv primeiro!");
     }else{
         System.out.println("Saindo");
@@ -71,73 +76,78 @@ do{
 
     
    do{
+  
             System.out.println("\n-Escolha qual controle da televisão utilizar-");
-            System.out.println("             |1- Quarto  | ");
-            System.out.println("             |2-  Sala   |");
-            System.out.println("             |3- Varanda |");
-            System.out.println("             |4-   Sair  |");
+            if(quantidade[0]==1){
+                 System.out.println("             |1- Tv  | ");
+            }else if(quantidade[0]==2){
+                System.out.println("             |1- Tv smart  | ");
+            }
+           if(quantidade[1]==1){
+             System.out.println("             |2- Tv  | ");
+           }else if(quantidade[1]==2){
+            System.out.println("             |2- Tv smart  | ");
+        }
+        if(quantidade[2]==1){
+            System.out.println("             |3- Tv  | ");
+          }else if(quantidade[2]==2){
+           System.out.println("             |3- Tv smart  | ");
+       }
             opc = scanf.nextInt();
-            if(opc==1 || opc==2){
+            
+
                switch(opc){
 
                 case 1:
-                
-                 System.out.println("\n-Ligue a Tv ou solte o controle-");
-                 System.out.println("      |1-      Ligar      |");
-                 System.out.println("      |2- Soltar controle |");
-                opcao = scanf.nextInt();
-                if(opcao==1){
 
-                    quarTv.setLigado();
-                    quarTv.message();
+                if(quantidade[0]==2){
+
+do{
+
+    opcao4 = controlesSmart[0].ligarTv();
+    if(opcao4==1){
+                    smarts[0].setLigado();
+                    smarts[0].message();
                     do{
-                
-                        System.out.println("\n|1-   Desligar Tv    |");
-                        System.out.println("|2-   Mudar canal    |");
-                        System.out.println("|3- Aumentar Volume  |");
-                        System.out.println("|4- Diminuir Volume  |");
-                        System.out.println("|5-     Conectar     |");
-                    option = scanf.nextInt();
-    
-                    switch(option){
+                        opcao2 = controlesSmart[0].opcoes();
+                     switch(opcao2){
     
                         case 1:
-                       quarTv.setLigado();
-                       quarTv.message();
+                        smarts[0].setLigado();
+                        smarts[0].message();
                         break;
     
                         case 2:
-                        System.out.println("\nDigite qual o canal que deseja");
-                        channel = scanf.nextInt();
-                        quarTv.setCanalAtual(channel);
+                        
+                        smarts[0].setCanalAtual(controlesSmart[0].mudarCanal());
                         break;
     
                         case 3:
-                       quarTv.setVolume(2);
+                        smarts[0].setVolume(2);
                         break;
     
                         case 4:
-                        quarTv.setVolume(1);
+                        smarts[0].setVolume(1);
                         break;
     
                         case 5:
-                       quarTv.setSmart();
-                        if(quarTv.getFirst()==true && quarTv.getFabrica()==0){
-                            System.out.println("\nPor ser a sua primeria conexão o Login é o Padrão: "+quarTv.getLogin()+" \nAltere-a depois nas configurações");
-                         System.out.println("\nPor ser a sua primeria conexão a Senha é o Padrão: "+quarTv.getSenha()+" \nAltere-a depois nas configurações"); 
-                        quarTv.setFirst(false);
-                         quarTv.setFabrica(1);
-                        }else if(quarTv.getFabrica()==1){
+                        smarts[0].setSmart();
+                        if(smarts[0].getFirst()==true &&  smarts[0].getFabrica()==0){
+                            System.out.println("\nPor ser a sua primeria conexão o Login é o Padrão: "+ smarts[0].getLogin()+" \nAltere-a depois nas configurações");
+                         System.out.println("\nPor ser a sua primeria conexão a Senha é o Padrão: "+ smarts[0].getSenha()+" \nAltere-a depois nas configurações"); 
+                         smarts[0].setFirst(false);
+                         smarts[0].setFabrica(1);
+                        }else if( smarts[0].getFabrica()==1){
                             do{
                             System.out.println("\n|Digite seu Login|");
                             login = scanf.next();
                             System.out.println("|Digite sua senha|");
                             senha = scanf.next(); 
                             
-    if(login.equals(quarTv.getLogin()) && senha.equals(quarTv.getSenha())){
+    if(login.equals( smarts[0].getLogin()) && senha.equals( smarts[0].getSenha())){
         System.out.println("Logando");
         op=-1;
-        quarTv.setFabrica(2);
+        smarts[0].setFabrica(2);
     }else{
         
         System.out.println("Login ou senha incorretos");
@@ -147,237 +157,106 @@ do{
                             
                             }while(op==6);
                             
-                        }else if(quarTv.getFabrica()==2){
+                        }else if( smarts[0].getFabrica()==2){
                             System.out.println("Entrando no modo Smart");
                         }
                         
                         do{
-                        System.out.println("\n|1-  Sair do Modo Smart  |");
-                        System.out.println("|2-      Desconectar     |");
-                        System.out.println("|3-      Desligar Tv     |");
-                        System.out.println("|4- Mudar Login ou senha |");
-                        System.out.println("|5-    Aumentar Volume   |");
-                        System.out.println("|6-    Diminuir Volume   |");
-                        op = scanf.nextInt();
-                        switch(op){
+                            opcao3 = controlesSmart[0].opcoes2();
+                        switch(opcao3){
                             case 1:
-                            quarTv.setSmart();
+                            smarts[0].setSmart();
                             break;
     
                             case 2:
-                           quarTv.setSmart();
-                           quarTv.setFabrica(1);
+                            smarts[0].setSmart();
+                            smarts[0].setFabrica(1);
                             break;
                             case 3:
-                            quarTv.setSmart();
-                           quarTv.setLigado();
+                            smarts[0].setSmart();
+                            smarts[0].setLigado();
+                            smarts[0].message();
+                            opcao = 1;
                             break;
                             case 4:
-                            System.out.println("\nDeseja mudar o login ou a senha?");
-                            System.out.println("          |1- Login|");
-                            System.out.println("          |2- senha|");
-                            int u = scanf.nextInt();
-                            if(u==1){
+                           
+                            if(controlesSmart[0].mudarLogin()==1){
                                 System.out.println("\nDigite o novo login");
                                 String novoLogin = scanf.next();
-    quarTv.setLogin(novoLogin);
-                            }else if(u==2){
+                                smarts[0].setLogin(novoLogin);
+                            }else if(controlesSmart[0].mudarLogin()==2){
                                 System.out.println("Digite a nova senha");
                                 String novaSenha = scanf.next();
-    quarTv.setSenha(novaSenha);
+                                smarts[0].setSenha(novaSenha);
                             }
                             break;
                             case 5:
-                            quarTv.setVolume(2);
+                            smarts[0].setVolume(2);
                             break;
                           
     
                             case 6:
-                            quarTv.setVolume(1);
+                            smarts[0].setVolume(1);
                             break;
                            
                         }
-                        }while(op!=1 && op!=2 && op!=3);
+                        }while(opcao3!=1 && opcao3!=2 && opcao3!=3);
                       
     
-                        break;
+                        
+                    }   
+                    }while(opcao2!=1 && smarts[0].getLigado()!=false);
+
                     }
-                    }while(option!=1 && quarTv.getLigado()==true);
+}while(opcao4!=2);
+                   
                  break;
-                   }
-                break;
 
-                case 2:
-                System.out.println("\n-Ligue a Tv ou solte o controle-");
-                System.out.println("      |1-       Ligar      |");
-                System.out.println("      |2-  Soltar controle |");
+                   }else if(quantidade[0]==1){
 
-                opcao = scanf.nextInt();
-
-               if(opcao==1){
-
-                salaTv.setLigado();
-                salaTv.message();
-                do{
-            
-                System.out.println("\n|1-   Desligar Tv    |");
-                System.out.println("|2-   Mudar canal    |");
-                System.out.println("|3- Aumentar Volume  |");
-                System.out.println("|4- Diminuir Volume  |");
-                System.out.println("|5-     Conectar     |");
-                option = scanf.nextInt();
-
-                switch(option){
-
-                    case 1:
-                    salaTv.setLigado();
-                    salaTv.message();
-                    break;
-
-                    case 2:
-                    System.out.println("\nDigite qual o canal que deseja");
-                    channel = scanf.nextInt();
-                    salaTv.setCanalAtual(channel);
-                    break;
-
-                    case 3:
-                    salaTv.setVolume(2);
-                    break;
-
-                    case 4:
-                    salaTv.setVolume(1);
-                    break;
-
-                    case 5:
-                    salaTv.setSmart();
-                    if(salaTv.getFirst()==true && salaTv.getFabrica()==0){
-                        System.out.println("\nPor ser a sua primeria conexão o Login é o Padrão: "+salaTv.getLogin()+" \nAltere-a depois nas configurações");
-                     System.out.println("\nPor ser a sua primeria conexão a Senha é o Padrão: "+salaTv.getSenha()+" \nAltere-a depois nas configurações"); 
-                     salaTv.setFirst(false);
-                     salaTv.setFabrica(1);
-                    }else if(salaTv.getFabrica()==1){
-                        do{
-                        System.out.println("|\n Digite seu Login |");
-                        login = scanf.next();
-                        System.out.println("| Digite sua senha |");
-                        senha = scanf.next(); 
-if(login.equals(salaTv.getLogin()) && senha.equals(salaTv.getSenha())){
-    System.out.println("Logando");
-    op=-1;
-    salaTv.setFabrica(2);
-}else{
-    
-    System.out.println("Login ou senha incorretos");
-    op=6;
-    
-}
-                        
-                        }while(op==6);
-                        
-                    }else if(salaTv.getFabrica()==2){
-                        System.out.println("\nEntrando no modo Smart");
-                    }
-                    
-                    do{
-                        System.out.println("\n|1-  Sair do Modo Smart  |");
-                        System.out.println("|2-      Desconectar     |");
-                        System.out.println("|3-      Desligar Tv     |");
-                        System.out.println("|4- Mudar Login ou senha |");
-                        System.out.println("|5-    Aumentar Volume   |");
-                        System.out.println("|6-    Diminuir Volume   |");
-                    op = scanf.nextInt();
-                    switch(op){
-                        case 1:
-                        salaTv.setSmart();
-                        break;
-
-                        case 2:
-                        salaTv.setSmart();
-                        salaTv.setFabrica(1);
-                        break;
-                        case 3:
-                        salaTv.setSmart();
-                        salaTv.setLigado();
-                        break;
-                        case 4:
-                        System.out.println("\nDeseja mudar o login ou a senha?");
-                        System.out.println("          |1- Login|");
-                        System.out.println("          |2- senha|");
-                        int u = scanf.nextInt();
-                        if(u==1){
-                            System.out.println("\n| Digite o novo login |");
-                            String novoLogin = scanf.next();
-salaTv.setLogin(novoLogin);
-                        }else if(u==2){
-                            System.out.println("\n| Digite a nova senha |");
-                            String novaSenha = scanf.next();
-salaTv.setSenha(novaSenha);
-                        }
-                        break;
-                        case 5:
-                        salaTv.setVolume(2);
-                        break;
-                      
-
-                        case 6:
-                        salaTv.setVolume(1);
-                        break;
-                       
-                    }
-                    }while(op!=1 && op!=2 && op!=3);
-                  
-
-                    break;
-                }
-                }while(option!=1 && salaTv.getLigado()==true);
-             break;
-               }
-                break;
-
-                
-            } 
-            }else if(opc==3){
-                     System.out.println("\n-Ligue a Tv ou solte o controle-");
-                    System.out.println("      |1-      Ligar     |");
-                    System.out.println("      |2- Soltar controle|");
-                    opcao = scanf.nextInt();
-                   if(opcao==1){
+                   opcao2 = controles[0].ligarTv();
+                   if(opcao2==1){
                      tvs[0].setLigado();
                      
                     do{
-                
-                   
-                        System.out.println("\n|1-   Desligar Tv    |");
-                        System.out.println("|2-   Mudar canal    |");
-                        System.out.println("|3- Aumentar Volume  |");
-                        System.out.println("|4- Diminuir Volume  |");
-                    option = scanf.nextInt();
-    
-                    switch(option){
+             opcao3 = controles[0].opcoes();
+                    switch(opcao3){
     
                         case 1:
-                        varTv.setLigado();
+                        tvs[0].setLigado();
                         break;
     
                         case 2:
-                        System.out.println("\nDigite qual o canal que deseja");
-                        channel = scanf.nextInt();
-                        varTv.setCanalAtual(channel);
+                        
+                        tvs[0].setCanalAtual(controles[0].mudarCanal());
                         break;
                         case 3:
-                        varTv.setVolume(2);
+                        tvs[0].setVolume(2);
                         
                         break;
     
                         case 4:
-                        varTv.setVolume(1);
+                        tvs[0].setVolume(1);
+                        break;
+                        case 5:
+tvs[0].adicionarCanais(10);
                         break;
                     }
-                    }while(option!=1);
+                    }while(opcao3!=1);
                  
                    }
+                   }
+               }
+             
+                
+              
 
-                    }
+               
+                
+        
+                    
+
+                    
                   
    }while(opc!=4);
         }
