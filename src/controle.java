@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class controleSmart {
+public class controle {
     int opc;
     int opcao;
     int option=0;
@@ -53,6 +53,16 @@ public class controleSmart {
         return opcao;
 
     }
+    public int opcoesTv(){
+        System.out.println("\n|1-   Desligar Tv    |");
+        System.out.println("|2-   Mudar canal    |");
+        System.out.println("|3- Aumentar Volume  |");
+        System.out.println("|4- Diminuir Volume  |");
+        System.out.println("|5-  Alterar canais  |");
+   opcao = scanf.nextInt();
+   return opcao;
+    }
+
     public int mudarLogin(){
         System.out.println("\nDeseja mudar o login ou a senha?");
                             System.out.println("          |1- Login|");

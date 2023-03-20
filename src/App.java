@@ -6,7 +6,7 @@ public class App {
     static int contadorSmart = 0;
     static  Tv[] tvs = new Tv[0];
     static  tvSmart[] smarts = new tvSmart[0];
-    static  controleSmart[] controlesSmart = new  controleSmart[3];
+    static  controle[] controlesSmart = new  controle[3];
     static  int[] quantidade = new int[3];
 
     public static void comprarTv() {
@@ -21,7 +21,7 @@ public class App {
         tvs[contadorTv] = new Tv();
         tvs[contadorTv++].setID(contador);
         quantidade[contador]=1;
-        controlesSmart[contador] = new controleSmart();
+        controlesSmart[contador] = new controle();
         contador++;
         for (Tv s : tvs) {
             System.out.println(s);
@@ -40,7 +40,7 @@ public class App {
         smarts[contadorSmart] = new tvSmart();
         smarts[contadorSmart++].setID(contador);
         quantidade[contador]=2;
-        controlesSmart[contador] = new controleSmart();
+        controlesSmart[contador] = new controle();
         contador++;
 
         for (tvSmart s : smarts) {
@@ -136,7 +136,7 @@ if(quantidade[opc-1]==1){
            tvs[i].setLigado();
 
            do{
-               opcao3 = controlesSmart[i].opcoes();
+               opcao3 = controlesSmart[i].opcoesTv();
                switch(opcao3){
 
                    case 1:
