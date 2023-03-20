@@ -123,9 +123,13 @@ do{
 
 if(quantidade[opc-1]==1){
     i=0;
-   while(tvs[i].getID()==opc-1 && i<3 ){
-       i++;
-   }
+    if(tvs[i].getID()!=opc-1){
+        while(i<3 && tvs[i].getID()==opc-1){
+            i++;
+
+        }
+    }
+
    if(i<3){
        opcao2 = controlesSmart[i].ligarTv();
        if(opcao2==1){
