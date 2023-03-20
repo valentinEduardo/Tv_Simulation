@@ -34,6 +34,7 @@ public class controleSmart {
     public int alterarCanais(){
         System.out.println("\n|1-  Adicionar canal  |");
         System.out.println("|2-      Remover canal     |");
+        System.out.println("|3-          Sair          |");
         opcao = scanf.nextInt();
 
         return opcao;
