@@ -1,8 +1,19 @@
 import java.util.Scanner;
 
 public class App {
+
+    public static void main(String[] args){ 
+   int contador = 0;
+     Tv[] tvs = new Tv[3];
+     tvSmart[] smarts = new tvSmart[3];
+      int[] quantidade = new int[3];
+
     
-    public static void main(String[] args){
+       
+        
+     for (Tv s : tvs) {
+                 System.out.println(s);
+     }
         try (Scanner scanf = new Scanner(System.in)) {
             tvSmart quarTv = new tvSmart();
             tvSmart salaTv = new tvSmart();
@@ -12,9 +23,53 @@ public class App {
             int option=0;
             int channel;
             int op;
+            
             String senha;
             String login;
+do{
+    System.out.println("             |1- comprar uma tv nova | ");
+    System.out.println("             |2- ir para  casa | ");
+    System.out.println("             |3-  Sair  |");
+    opc = scanf.nextInt();
+    if(opc==1){
+         do{
+        System.out.println("\n-Vc pode ter até 3 tvs-");
+        System.out.println("\n-Escolha qual comprar-");
+        System.out.println("             |1- Tv | ");
+        System.out.println("             |2-  Smart Tv  |");
+        opc = scanf.nextInt();
 
+
+         if ( opc== 1 && contador< 3 ) {
+         
+           tvs[contador] = new Tv();
+           contador++;
+        }else{
+            System.out.println("Vc atingiu o número máximo de tvs");
+        }
+
+        if (opc == 2 && contador< 3 ) {
+        
+           smarts[contador] = new tvSmart();
+           contador++;
+        }else{
+            System.out.println("Vc atingiu o número máximo de tvs ou digitou errado");
+        }
+
+     }while();
+    }else if(opc==2 && contador>0){
+
+    }else if(opc==2 && conttador==0){
+        System.out.println("Compre uma Tv primeiro!");
+    }else{
+        System.out.println("Saindo");
+    }
+   
+
+}while(opc!=3);
+      
+
+    
    do{
             System.out.println("\n-Escolha qual controle da televisão utilizar-");
             System.out.println("             |1- Quarto  | ");
@@ -158,6 +213,7 @@ public class App {
                 System.out.println("      |2-  Soltar controle |");
 
                 opcao = scanf.nextInt();
+
                if(opcao==1){
 
                 salaTv.setLigado();
@@ -286,7 +342,8 @@ salaTv.setSenha(novaSenha);
                     System.out.println("      |2- Soltar controle|");
                     opcao = scanf.nextInt();
                    if(opcao==1){
-                     varTv.setLigado();
+                     tvs[0].setLigado();
+                     
                     do{
                 
                    
