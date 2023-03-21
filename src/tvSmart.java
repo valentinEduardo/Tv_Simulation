@@ -1,8 +1,10 @@
+import model.model;
+
 public class tvSmart extends model {
 private String Login = "123456";
 private String Senha = "987654";
-private Boolean firstTime = true;
-private Boolean Smart = false;
+private boolean firstTime = true;
+private boolean Smart = false;
 private int fabrica = 0;
 
 public String getLogin(){

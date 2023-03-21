@@ -1,10 +1,6 @@
 import java.util.Scanner;
 public class controle {
-    int opc;
     int opcao;
-    int option=0;
-    int channel;
-    int op;
     Scanner scanf = new Scanner(System.in);
 
     public int ligarTv(){

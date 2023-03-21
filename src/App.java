@@ -283,7 +283,7 @@ if(quantidade[opc-1]==1){
                         case 6:
                             opcao5 =   controlesSmart[i].alterarCanais();
                             if(opcao5==1){
-                                System.out.println("\nDigite qual canaldeseja adicionar");
+                                System.out.println("\nDigite qual canal deseja adicionar");
                                 canal = scanf.nextInt();
                                 smarts[i].adicionarCanais(canal);
                             }else if(opcao5==2){
