@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class App {
-   static int contador = 0;
+    static int contador = 0;
     static  int contadorTv = 0;
     static int contadorSmart = 0;
     static  Tv[] tvs = new Tv[0];
@@ -49,7 +49,7 @@ public class App {
     }
 
     public static void main(String[] args){ 
-int i = 0;
+
 
 
 
@@ -64,7 +64,7 @@ int i = 0;
             int canal;
             String senha;
             String login;
-
+            int i = 0;
 do{
     System.out.println("             |1- comprar uma tv nova | ");
     System.out.println("             |2- ir para  casa | ");
@@ -124,7 +124,7 @@ do{
 if(quantidade[opc-1]==1){
     i=0;
     if(tvs[i].getID()!=opc-1){
-        while(i<3 && tvs[i].getID()==opc-1){
+        while(i<3 && tvs[i].getID()!=opc-1){
             i++;
 
         }
@@ -175,9 +175,11 @@ if(quantidade[opc-1]==1){
 
 }else if(quantidade[opc-1]==2){
     i=0;
-    while(i<3 && smarts[i].getID()==opc-1){
+    if(smarts[i].getID()!=opc-1){
+    while(i<3 && smarts[i].getID()!=opc-1){
         i++;
     }
+}
     if(i<3){
         do{
             opcao4 = controlesSmart[i].ligarTv();
