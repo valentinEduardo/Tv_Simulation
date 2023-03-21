@@ -1,24 +1,61 @@
 public abstract class model {
+private static int contador = 0;
+private int indice;
+private int id;
     private Boolean ligado;
     private int volume;
-    private int canalAtual;
-    private int[] canais = new int[5];{
+    private int canalAtual; 
+    private int tamanho = 5;
+    private static int[] canais = new int[5];{
     canais[0] = 1;
     canais[1] = 3;
     canais[2] = 5;
     canais[3] = 7;
     canais[4] = 11;
     }
-
    
+
+    public void adicionarCanais(int i) {
+        if ( tamanho == canais.length && !verifCanais(-1) && !verifCanais(i) ) {
+            // Copia toda a lista para um novo array, maior
+            int[] novaLista = new int[canais.length+1];
+            System.arraycopy(canais, 0, novaLista, 0, tamanho);
+            // Substitui a lista original
+            canais = novaLista;
+             canais[tamanho++] = i;
+        }else if(verifCanais(-1)){
+            canais[indice] = i;
+        }
+        for (int s : canais) {
+            System.out.println(s);
+        }
+    }
+
+    public void print(){
+        for (int i : canais) {
+            System.out.println(i);
+
+        }
+        System.out.print("\n"+tamanho);
+    }
+   
+    public void removerCanais(int i){
+        if(verifCanais(i)){
+            canais[indice]=-1;
+        }
+    }
+
     
     
     public model(){
         ligado = false;
         volume = 0;
         canalAtual = canais[0];
+        contador++;
+
 
     }
+
 public void message(){
     if(ligado==true){
         System.out.println("A Tv foi Ligada");
@@ -44,7 +81,7 @@ public void message(){
     }
 
     public void setVolume(int i){
-        if(i==1 &&volume<=100 && volume>=0){
+        if(i==1 &&volume<=100 && volume>0){
            this.volume--;
             getVolume();
         }else if(i==2 &&volume<=100 && volume>=0){
@@ -69,14 +106,24 @@ return canalAtual;
 
    public boolean verifCanais(int canal){
     int i = 0;
-    while( i<canais.length && canal!=canais[i] ){
+    if(canal>0 || canal==-1){
+        while( i<canais.length && canal!=canais[i] ){
      i++;
     }
-    if (i>=5){
+    if (i>=canais.length){
         return false;
     }else{
+        indice=i;
         return true;
     }
-
+    }else{
+        return false;
+    }
    }
+   public void setID(int id){
+       this.id = id;
+   }
+    public int getID(){
+       return id;
+    }
 }
