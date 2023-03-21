@@ -1,5 +1,4 @@
 public abstract class model {
-private static int contador = 0;
 private int indice;
 private int id;
     private Boolean ligado;
@@ -51,9 +50,6 @@ private int id;
         ligado = false;
         volume = 0;
         canalAtual = canais[0];
-        contador++;
-
-
     }
 
 public void message(){
