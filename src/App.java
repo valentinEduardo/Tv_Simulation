@@ -210,7 +210,7 @@ if(quantidade[opc-1]==1){
 
                         case 5:
                             smarts[i].setSmart();
-                            if(smarts[i].getFirst()==true &&  smarts[0].getFabrica()==0){
+                            if(smarts[i].getFirst()==true &&  smarts[i].getFabrica()==0){
                                 System.out.println("\nPor ser a sua primeria conexão o Login é o Padrão: "+ smarts[i].getLogin()+" \nAltere-a depois nas configurações");
                                 System.out.println("\nPor ser a sua primeria conexão a Senha é o Padrão: "+ smarts[i].getSenha()+" \nAltere-a depois nas configurações");
                                 smarts[i].setFirst(false);
